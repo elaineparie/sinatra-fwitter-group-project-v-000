@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
 
 has_secure_password
 
+def self.find_by_slug(slug)
+  self.all.find do |user|
+    user.slug == slug
+    end
+
   def slug
     user = self.username
     user = user.downcase
@@ -12,9 +17,5 @@ has_secure_password
 end
 
 
-def self.find_by_slug(slug)
-  self.all.find do |user|
-    user.slug == slug
-    end
 
     end
